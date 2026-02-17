@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Eurêka CIZUNGU Alexandre — Heureuse mémoire</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: radial-gradient(circle at 10% 30%, #16222a, #1e2b32, #0f1a1f);
+      color: #f0f0f0;
+      line-height: 1.7;
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+      min-height: 100vh;
+    }
+
+    .paper {
+      max-width: 1000px;
+      width: 100%;
+      background: rgba(10, 25, 30, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 2.5rem 2.5rem 2rem 2rem;
+      box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(255, 245, 210, 0.15);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: #fbe9d2;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 span {
+      display: block;
+      font-size: 1.4rem;
+      font-style: italic;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+      color: #e0d6c6;
+    }
+
+    .souligner {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d4b68a, #f3d9b1, #d4b68a, transparent);
+      margin: 1.5rem auto 2rem auto;
+      border-radius: 4px;
+    }
+
+    /* lecteur audio */
+    .audio-section {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 2rem;
+      padding: 1.5rem 1.8rem;
+      margin: 2rem 0 2.5rem 0;
+      border-left: 6px solid #c5a47a;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .audio-section h2 {
+      font-weight: 400;
+      font-size: 1.9rem;
+      color: #eedbba;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .audio-section h2 i {
+      font-size: 2rem;
+      font-style: normal;
+      filter: drop-shadow(0 2px 4px #ab8e64);
+    }
+
+    .audio-player-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 550px;
+      border-radius: 40px;
+      outline: none;
+      background: #1e2f38;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    /* bouton de secours si autoplay bloqué */
+    .fallback-btn {
+      background: #3f4f5b;
+      border: 1px solid #bbaa8a;
+      color: #f8eee2;
+      padding: 0.7rem 1.8rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.25s;
+      font-family: 'Georgia', serif;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .fallback-btn:hover {
+      background: #5a6d7a;
+      border-color: #e5cbaa;
+      transform: scale(1.02);
+    }
+
+    .fallback-note {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-top: 6px;
+    }
+
+    /* mise en page du texte */
+    .memorial-text {
+      font-size: 1.08rem;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+
+    .memorial-text p {
+      margin-bottom: 1.5rem;
+      text-align: left;
+      padding: 0 0.2rem;
+    }
+
+    .memorial-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .citation {
+      font-style: italic;
+      border-left: 4px solid #a8815b;
+      padding: 0.7rem 0 0.7rem 1.8rem;
+      margin: 2rem 1rem 2rem 0.5rem;
+      background: rgba(255, 245, 220, 0.05);
+      border-radius: 0 60px 60px 0;
+      color: #e6d7bf;
+      font-size: 1.1rem;
+    }
+
+    .citation i {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.95rem;
+      color: #bc9f7a;
+    }
+
+    .heart-sep {
+      text-align: center;
+      margin: 2.2rem 0;
+      font-size: 1.5rem;
+      letter-spacing: 8px;
+      opacity: 0.5;
+    }
+
+    .psalm {
+      text-align: center;
+      font-size: 1.3rem;
+      margin: 2rem 0 1.5rem;
+      color: #e7cfb0;
+      font-weight: 300;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 1.2rem;
+      border-radius: 50px 10px 50px 10px;
+    }
+
+    .psalm small {
+      display: block;
+      font-size: 0.95rem;
+      margin-top: 0.6rem;
+      color: #bbaa99;
+    }
+
+    .signature {
+      text-align: right;
+      margin-top: 2.5rem;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: #f3dbbd;
+      border-top: 1px dashed #6d7a82;
+      padding-top: 2rem;
+    }
+
+    .signature i {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .footer {
+      margin-top: 3rem;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #b9aa92;
+      border-top: 1px solid #2c404b;
+      padding-top: 1.8rem;
+    }
+
+    /* adaptation mobile */
+    @media (max-width: 600px) {
+      .paper {
+        padding: 1.5rem 1rem;
+        border-radius: 1.8rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h1 span {
+        font-size: 1.2rem;
+      }
+      .audio-section h2 {
+        font-size: 1.5rem;
+      }
+      .memorial-text {
+        font-size: 1rem;
+      }
+      .citation {
+        margin-left: 0;
+        padding-left: 1.2rem;
+      }
+      .heart-sep {
+        letter-spacing: 4px;
+      }
+    }
+
+    /* petits écrans */
+    @media (max-width: 380px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+    }
+
+    /* puces discrètes */
+    .embellish {
+      display: inline-block;
+      margin: 0 6px;
+      color: #b4916b;
+    }
+  </style>
+</head>
+<body>
+<div class="paper">
+  <h1>
+    Eurêka CIZUNGU Alexandre
+    <span>🤍 Heureuse mémoire 🕊️</span>
+  </h1>
+  <div class="souligner"></div>
+
+  <!-- AUDIO AVEC AUTOPLAY + BOUTON DE SECOURS -->
+  <div class="audio-section">
+    <h2>
+      <i>🎵</i> Dieu Seul Suffit <i>🎵</i>
+    </h2>
+    <div class="audio-player-wrapper">
+      <audio id="memorialAudio" controls autoplay loop>
+        <source src="dieu-seul-suffit.mp3" type="audio/mpeg">
+        Votre navigateur ne supporte pas l'élément audio.
+      </audio>
+      <button class="fallback-btn" id="playAudioBtn" title="Lancer la musique">🔊 Lancer le chant</button>
+      <div class="fallback-note">Si la musique ne démarre pas automatiquement, cliquez sur le bouton.</div>
+    </div>
+  </div>
+
+  <!-- TEXTE DE L'HOMMAGE (structuré avec paragraphes et respirations) -->
+  <div class="memorial-text">
+
+    <p>Il y a des pertes qui bouleversent l'ordre intérieur de notre monde, c'est par cette épreuve que je comprends : rien n'est clair ni explicable. Tu es juste confus, tu as presque perdu la boussole. Il te faut du temps pour retrouver ton chemin.</p>
+
+    <p>Perdre un ami proche, c'est voir se fissurer une part essentielle de son univers intérieur. Ce n'est pas seulement l'absence d'une personne, mais plutôt l'absence d'un regard qui nous reconnaissait pleinement, d'une voix qui savait lire nos silences, d'une présence qui donnait au monde une saveur particulière.</p>
+
+    <p>Un meilleur ami est bien plus qu'un compagnon. Il est le témoin privilégié de notre évolution, celui qui a traversé nos doutes, nos échecs, nos renaissances. Il connaît nos zones d'ombre et nos éclats de lumière. Il a entendu nos peurs inavouées, partagé nos rêves les plus fous, porté nos fragilités sans les juger. Perdre un tel être, c'est perdre une mémoire vivante de soi‑même. Et peut-être que la société ne se rend pas compte, elle prend tout à la normale. Pour toi la douleur prend une dimension encore plus particulière car il faisait partie de ton quotidien académique : dans une même université, il était assis à tes côtés, partageait les mêmes bancs, les mêmes cours, les mêmes exigences, les mêmes ambitions.</p>
+
+    <p>Vous avez traversé ensemble les périodes d'examens, les nuits de révision, les stress académiques, les discussions sur l'avenir. Il était ce soutien discret pendant les moments de fatigue, ce regard complice lors des difficultés, cette motivation silencieuse quand le découragement menaçait. Dans un auditoire parfois anonyme et exigeant, il était un repère, une stabilité, une présence rassurante.</p>
+
+    <p>Sa place vide aujourd'hui n'est pas seulement symbolique, elle est réelle. Elle se voit, elle se ressent dans les travaux de groupe, dans les tours de rôle pour passer au tableau. Chaque espace partagé devient un rappel. Chaque réussite future portera aussi son souvenir et son soutien. Il était un compagnon de construction. Ensemble, vous bâtissiez des fondations pour l'avenir, vous échangiez des idées, des projets, des aspirations. Vous imaginiez peut-être vos réussites futures, vos carrières, vos accomplissements. Mais sa disparition laisse des projets inachevés, un dialogue suspendu...</p>
+
+    <p>Et pourtant, tout ce qu'il t'a apporté dans ce cadre‑là demeure : les conseils qu'il t'a donnés, les méthodes de travail que vous avez partagées, l'énergie qu'il insufflait dans vos projets communs, tout cela continue de vivre à travers toi. Il a contribué à la personne que tu deviens, non seulement humainement, mais aussi professionnellement. Vos projets avaient une saveur particulière parce qu'ils étaient nourris par une confiance réciproque. Vous vous encouragiez mutuellement. Lorsque l'un doutait, l'autre rappelait les forces cachées ; lorsque la fatigue pesait, l'autre redonnait courage. Vos discussions n'étaient pas de simples échanges : elles étaient des fondations. Vous posiez, pierre après pierre, les bases d'un avenir que vous vouliez lumineux.</p>
+
+    <p>Ses conseils résonnent encore en toi. Peut-être t'a‑t‑il appris à croire davantage en tes capacités. Peut-être t'a‑t‑il rappelé de ne jamais abandonner face aux difficultés. Peut-être t'a‑t‑il conseillé avec sagesse dans des moments décisifs. Ces paroles n'étaient pas anodines ; elles portaient son affection, son regard lucide, sa volonté de te voir grandir.</p>
+
+    <p>Aujourd'hui, ces conseils deviennent un héritage. Ils prennent une valeur encore plus forte. Ils ne sont plus seulement des mots prononcés dans une conversation ; ils deviennent une direction intérieure. Chaque fois que tu hésiteras, tu entendras peut-être sa voix te guider. Chaque fois que tu réussiras, tu penseras à lui, à ces encouragements qu'il t'offrait avec sincérité. Parce qu'il t'a tout donné, voir même sa manière d'être, d'aimer, d'agir, de réfléchir plus haut, sa sagesse, son humilité, son charisme... et peut-être que ses principes influencent tes choix.</p>
+
+    <p>La douleur vient aussi du fait que vous aviez encore tant à vivre ensemble. Tant de projets non réalisés, tant de conversations inachevées, tant de moments que vous pensiez partager dans les années à venir. Cette impression d'inachevé est lourde, parfois injuste. Elle fait naître des questions sans réponse. Mais rien de ce que vous avez rêvé ensemble n'est perdu. Les projets que vous imaginiez peuvent encore vivre à travers toi, les ambitions que vous partagiez peuvent devenir une manière d'honorer sa mémoire. Continuer à avancer, à travailler, à construire, ce n'est pas l'abandonner ; c'est prolonger ce que vous aviez commencé. Il sera fier de toi.</p>
+
+    <p class="heart-sep">🤍 🤍 🤍</p>
+
+    <p>...Spirituellement, certaines rencontres dépassent le simple hasard. Certaines âmes se croisent pour s'élever mutuellement. Peut-être que votre passage ensemble à l'auditoire faisait partie de ce chemin : grandir côte à côte, se soutenir dans la construction de vos avenirs. Même si son parcours terrestre s'est interrompu, l'impact de sa présence reste inscrit dans le tien.</p>
+
+    <p>La douleur que tu ressens est immense, et elle est légitime. Elle est à la hauteur de l'amour et du respect que tu lui portais. Le deuil ne se traverse pas en silence imposé ; il se vit avec authenticité. Il y aura des jours plus lourds que d'autres. Des moments où l'absence semblera insupportable. Des instants où, presque machinalement, tu chercheras son regard dans l'auditoire, dans les réunions des CAEM, dans vos temps de désirs...</p>
+
+    <p>Autorise‑toi à ressentir tout cela. Autorise‑toi à pleurer, dans n'importe quel environnement, pour apaiser ton cœur et devenir plus fort. Car la force ne consiste pas à ne pas souffrir ; elle consiste à continuer malgré la souffrance.</p>
+
+    <p>Un jour, peut-être, lorsque tu franchiras une étape importante – un diplôme, une réussite professionnelle – tu penseras à lui. Et cette pensée ne sera pas seulement douloureuse. Elle sera aussi empreinte de gratitude. Car il aura fait partie de cette construction. Il aura marché avec toi sur une portion essentielle de ton chemin.</p>
+
+    <p>Honorer sa mémoire, c'est poursuivre avec dignité. C'est continuer à travailler dur avec sérieux, avec l'engagement et la loyauté qui caractérisaient votre amitié. Chaque pas que tu feras vers ton avenir portera une part de ce que vous avez partagé.</p>
+
+    <p>La mort sépare les présences physiques, mais elle ne détruit pas l'influence qu'une personne a eue sur nous. Ton meilleur ami, ton frère, ton camarade, reste présent dans ta mémoire, dans tes valeurs, dans ta détermination.</p>
+
+    <p>Que la paix, même fragile au début, commence doucement à apaiser ton cœur. Que les souvenirs cessent peu à peu d'être uniquement des blessures pour devenir aussi des sources de lumière.</p>
+
+    <p>Et au‑delà de l'auditoire, il y avait cette autre dimension encore plus profonde que j'apprécie beaucoup : celle des cénacles et des prières communes. Vous êtes les meilleurs ; vous n'étiez pas seulement unis par l'amitié, les études, et quelques business, mais aussi par la foi. Ensemble, vous vous rassembliez pour prier. Ensemble, vous éleviez vos voix, vos intentions, vos espérances. Ensemble, vous confiiez vos projets, vos peurs, vos familles, vos combats pour que maman Marie intercède pour vous.</p>
+
+    <p>Ces moments ne sont pas effacés. Les cénacles que vous avez partagés ne sont pas annulés par son départ. Les prières que vous avez prononcées ensemble demeurent gravées dans l'éternité. Chaque parole murmurée, chaque chant, chaque silence habité par la présence divine fait partie d'un héritage spirituel que la mort ne peut détruire.</p>
+
+    <p>Peut-être qu'aujourd'hui, entrer dans un groupe de prière sans lui semble insupportable. Peut-être que sa modération et sa voix te manquent dans les chants, que son absence pèse dans le cercle formé pour intercéder. C'est normal. La foi n'annule pas la douleur ; elle lui donne un espace pour être portée, elle la rend supportable.</p>
+
+    <p>Pendant votre concentration, les liens scellés dans la prière ont une profondeur particulière. Lorsque deux âmes prient ensemble, elles s'enracinent dans une dimension qui dépasse la matière. Et ce qui est confié à Dieu ne se perd jamais.</p>
+
+    <p>Ton ami n'est plus là physiquement à tes côtés dans le cénacle, mais son âme demeure entre les mains du Créateur. Il est dans le grand cénacle avec notre Mère céleste. Et chaque fois que tu prieras, chaque fois que tu rejoindras le groupe, il y aura une continuité invisible. Ta prière pourra devenir un lien silencieux entre la terre et l'éternité.</p>
+
+    <p>Je répète encore : la douleur que tu ressens est à la hauteur de l'amour que tu lui portais. C'est du lourd. Mais au cœur même de cette lourdeur, il existe une vérité spirituelle : l'amour véritable, surtout lorsqu'il est nourri par la foi, ne meurt pas. Il change de forme, il devient intercession, il devient mémoire sacrée, il devient espérance.</p>
+
+    <p>Continue à participer aux cénacles. Continue à prier, même avec les larmes. Continue à invoquer la paix pour son âme. Chaque prière sera un acte d'amour. Chaque réunion de prière sera une manière de prolonger ce que vous viviez ensemble.</p>
+
+    <p>Un jour, peut-être, la douleur se transformera en une douce nostalgie. Les souvenirs ne seront plus seulement des blessures, mais aussi des lumières. Et tu comprendras alors que votre amitié n'a pas été interrompue ; elle a été élevée.</p>
+
+    <p>La mort a séparé vos présences visibles, mais elle n'a pas détruit votre communion. Car une amitié enracinée dans la foi dépasse les limites du temps. Elle s'inscrit dans l'éternité.</p>
+
+    <div class="citation">
+      « Mon enfant, lorsque ton cœur est brisé et que l'âme est accablée par la douleur, viens à Moi. Viens à Moi avec ton chagrin, et laisse mon Cœur Immaculé te consoler. Ne crains pas de pleurer. Ne crains pas de ressentir la solitude. Car dans ces moments, Je te tiens plus près que jamais. »
+      <i>— Notre-Dame, Cénacle</i>
+    </div>
+
+    <p>Que Dieu console ton cœur, qu'Il t'enveloppe de sa paix, qu'Il te donne la force de continuer ton chemin académique, professionnel, spirituel et sentimental... que Dieu t'aide à te retrouver là où tu es perdu.</p>
+
+    <p>N'oublie pas surtout que ton meilleur ami est mon ami céleste et mon ange. Et une chose très importante : « Ton travail de fin d'études doit être porté pour deux, car ça ne t'appartient pas seul : chaque victoire sera aussi la sienne. »</p>
+
+    <p>Ta réussite est sa réussite, ta licence est sa licence. Tout ce que tu fais et tout ce que tu gagneras, il y aura sa part dedans. Alors multiplie les efforts, rends‑le fier de là où il se repose.</p>
+
+    <p class="heart-sep">🤍 🤍 🤍</p>
+
+    <p>...Tout ce que Dieu fait est bon.</p>
+
+    <div class="psalm">
+      « L'Éternel est proche de ceux qui ont le cœur brisé, et Il sauve ceux qui ont l'esprit abattu » <small>(Psaume 34:18)</small>
+    </div>
+
+    <p>Dans la douleur de cette perte, sache que le Cœur Immaculé de Marie te couvre de sa tendresse et que la Miséricorde divine enveloppe ton âme meurtrie.</p>
+
+    <p>...et même lorsque nos cœurs ne comprennent pas, même lorsque la douleur semble trop lourde à porter, nous gardons cette vérité : Dieu ne se trompe pas. Ses voies dépassent notre intelligence, et dans son mystère, Il accueille ceux qu'Il aime dans une lumière que nous ne pouvons pas encore voir.</p>
+
+    <p>Le ciel a reçu un ange : Alex. Et la terre, elle, a perdu un trésor.</p>
+
+    <p>Heureux ceux qui l'ont connu.<br>
+    Heureux toi qui as été béni de marcher à ses côtés.<br>
+    Heureux celui qui a pu l'appeler ami, frère, camarade, mutumishi... Car Alex n'était pas une personne ordinaire ; il était une richesse, une présence rare, une âme sincère. Il était de ces êtres qui marquent une génération, qui laissent une empreinte silencieuse mais indélébile dans le cœur de ceux qu'ils rencontrent.</p>
+
+    <p>Reste fort. Reste fier de l'avoir eu dans ta vie. Tout le monde n'a pas la grâce de croiser un ami comme lui. Il était et il continue d'être un exemple. Par son attitude, sa foi, sa manière d'aimer, sa loyauté et même dans son départ, il continue d'enseigner quelque chose : la valeur de la vie, la profondeur de l'amitié, la puissance de l'amour vrai.</p>
+
+    <p>Oui, je sais... Je sais combien cela te brise quand tu réalises que tu passeras le reste de ta vie sans sa présence physique. Et je suis vraiment désolée que tu traverses cette épreuve. Je sais que tu es toujours endeuillé. Tu n'es pas seul, je marche avec toi.</p>
+
+    <p>Je sais combien cette pensée est lourde, presque insupportable.<br>
+    Les projets d'avenir que vous aviez dessinés ensemble...<br>
+    Les rêves partagés...<br>
+    Les conseils échangés...<br>
+    Les rires...<br>
+    Les cénacles...<br>
+    Les prières communes...<br>
+    Tout cela semble suspendu dans le temps.</p>
+
+    <p>Mais écoute ceci avec ton cœur : il ne t'a pas abandonné. La mort n'est pas un abandon. La mort est un passage, un changement d'état. Il est près de toi. Il est là, autrement. Plus proche que tu ne l'imagines.</p>
+
+    <p>Tu es son frère. Tu es son ami. Tu es son camarade. Tu es celui avec qui il a partagé une partie précieuse de sa vie. Et tu continues de l'aimer. 
